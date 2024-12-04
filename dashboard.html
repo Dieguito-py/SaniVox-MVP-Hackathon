@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>   
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="logo-container">
+                <img src="assets/logoWhite.png" alt="Logo" class="logo">
+            </div>
+            <ul class="menu">
+                <li><a href="#" id="openModalBtn">Dashboard</a></li>
+                <li><a href="#" id="openActivityModal">Atividades</a></li>
+                <li><a href="#">Turmas</a></li>
+                <li><a href="#">Relatórios</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </div>
+
+        <div id="activityModal" class="modal">
+            <div class="modal-content">
+              <span id="closeModalBtn" class="close">&times;</span>
+              <h2>Criar Atividade</h2>
+              <form id="activityForm">
+                <label for="date">Data:</label>
+                <input type="date" id="date" name="date" required>
+    
+                <label for="time">Horário de Início:</label>
+                <input type="time" id="time" name="time" required>
+
+                <label for="time">Horário de Fim:</label>
+                <input type="time" id="time" name="time" required>
+    
+                <label for="class">Turma:</label>
+                <select id="class" name="class" required>
+                  <option value="turmaA">Turma A</option>
+                  <option value="turmaB">Turma B</option>
+                  <option value="turmaC">Turma C</option>
+                  <option value="turmaD">Turma D</option>
+                  <option value="turmaE">Turma E</option>
+                </select>
+    
+                <label for="students">Número de Alunos:</label>
+                <input type="number" id="students" name="students" required>
+    
+                <label for="procedure">Tipo de Procedimento:</label>
+                <select id="procedure" name="procedure" required>
+                  <option value="procedimentoA">Procedimento A</option>
+                  <option value="procedimentoB">Procedimento B</option>
+                  <option value="procedimentoC">Procedimento C</option>
+                  <option value="procedimentoD">Procedimento D</option>
+                </select>
+    
+                <label for="items">Itens Usados:</label>
+                <textarea id="items" name="items" placeholder="Itens adicionais, não inclusos no procedimento padrão"></textarea>
+    
+                <button type="submit">Criar Atividade</button>
+              </form>
+            </div>
+          </div>
+
+        <div class="main-content">
+            <header>
+                <h1>Professor Dashboard</h1>
+                <p>Visão geral das atividades e custos associados</p>
+            </header>
+
+            <section class="overview">
+                <div class="card">
+                    <h2>N° Atividades Realizadas</h2>
+                    <p>120</p>
+                </div>
+                <div class="card">
+                    <h2>Turmas Trabalhadas</h2>
+                    <p>6</p>
+                </div>
+                <div class="card">
+                    <h2>Custo Total</h2>
+                    <p>R$3,500</p>
+                </div>
+            </section>
+
+            <section class="recent-activities">
+                <h2>Atividades Recentes</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data e Horário</th>
+                            <th>Turma</th>
+                            <th>Duração</th>
+                            <th>N° de Alunos</th>
+                            <th>Custo Médio/Aluno</th>
+                            <th>Custo Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>04/12/2024 - 09:00</td>
+                            <td>Turma A</td>
+                            <td>1h30</td>
+                            <td>25</td>
+                            <td>R$10</td>
+                            <td>R$250</td>
+                        </tr>
+                        <tr>
+                            <td>03/12/2024 - 14:00</td>
+                            <td>Turma B</td>
+                            <td>2h</td>
+                            <td>20</td>
+                            <td>R$12</td>
+                            <td>R$240</td>
+                        </tr>
+                        <tr>
+                            <td>02/12/2024 - 08:00</td>
+                            <td>Turma C</td>
+                            <td>1h</td>
+                            <td>30</td>
+                            <td>R$8</td>
+                            <td>R$240</td>
+                        </tr>
+                        <tr>
+                            <td>01/12/2024 - 10:30</td>
+                            <td>Turma D</td>
+                            <td>2h</td>
+                            <td>15</td>
+                            <td>R$15</td>
+                            <td>R$225</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="charts">
+                <div class="chart-container">
+                    <h2>Atividades por Turma</h2>
+                    <canvas id="activitiesByClass"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h2>Custo Total das Atividades</h2>
+                    <canvas id="totalCostOverTime"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h2>Custo por Turma</h2>
+                    <canvas id="costByClass"></canvas>
+                  </div>
+            </section>
+        </div>
+    </div>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>
