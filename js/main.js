@@ -3,6 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loginForm.addEventListener("submit", (event) => {
         event.preventDefault();
-        window.location.href = "dashboard.html";
+        window.location.href = "dashboardPedagogico.html";
     });
 });

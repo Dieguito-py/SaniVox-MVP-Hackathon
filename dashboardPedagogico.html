@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedagógico Dashboard</title>
+    <link rel="stylesheet" href="css/dashboardPedagogico.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div id="activitiesModal" class="modal">
+        <div class="modal-content">
+            <span id="closeActivitiesModal" class="close">&times;</span>
+            <h2>Atividades</h2>
+
+            <table class="activities-table">
+                <thead>
+                    <tr>
+                        <th>Nome da Atividade</th>
+                        <th>Itens Usados</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody id="activitiesTableBody">
+                </tbody>
+            </table>
+
+            <button id="createActivityBtn" class="create-activity-btn">Criar Nova Atividade</button>
+        </div>
+    </div>
+
+    <div id="createActivityModal" class="modal">
+        <div class="modal-content">
+            <span id="closeCreateActivityModal" class="close">&times;</span>
+            <h3>Criar Nova Atividade</h3>
+            <form id="createActivityForm">
+                <label for="activityName">Nome da Atividade:</label>
+                <input type="text" id="activityName" required>
+
+                <label for="activityItems">Itens Usados (Nome e Quantidade):</label>
+                <textarea id="activityItems" rows="4" placeholder="Exemplo: Item A - 2, Item B - 5" required></textarea>
+
+                <button type="submit">Criar Atividade</button>
+            </form>
+            <button id="cancelCreateActivity">Cancelar</button>
+        </div>
+    </div>
+
+    <div id="inventoryModal" class="modal">
+        <div class="modal-content">
+            <span id="closeInventoryModal" class="close">&times;</span>
+            <h2>Inventário</h2>
+            <table class="inventory-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Caixas</th>
+                        <th>Preço da Caixa</th>
+                        <th>Unidades por Caixa</th>
+                        <th>Data de Validade</th>
+                    </tr>
+                </thead>
+                <tbody id="inventoryTableBody">
+                </tbody>
+            </table>
+            <button id="addNewItemBtn" class="add-item-btn">Adicionar Novo Item</button>
+        </div>
+    </div>
+
+    <div id="addItemModal" class="modal">
+        <div class="modal-content">
+            <span id="closeAddItemModal" class="close">&times;</span>
+            <h3>Adicionar Novo Item</h3>
+            <form id="addItemForm">
+                <label for="itemName">Nome do Item:</label>
+                <input type="text" id="itemName" required>
+
+                <label for="itemCaixas">Quantidade de Caixas:</label>
+                <input type="number" id="itemCaixas" required>
+
+                <label for="itemPreco">Preço da Caixa (R$):</label>
+                <input type="number" step="0.01" id="itemPreco" required>
+
+                <label for="itemUnidades">Unidades por Caixa:</label>
+                <input type="number" id="itemUnidades" required>
+
+                <label for="itemValidade">Data de Validade:</label>
+                <input type="date" id="itemValidade" required>
+
+                <button type="submit">Adicionar Item</button>
+            </form>
+            <button id="cancelAddItem">Cancelar</button>
+        </div>
+    </div>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="logo-container">
+                <img src="assets/logoWhite.png" alt="Logo" class="logo">
+            </div>
+            <ul class="menu">
+                <li><a href="#" id="openModalBtn">Dashboard</a></li>
+                <li><a href="#" id="openInventoryModal">Inventário</a></li>
+                <li><a href="#" id="openActivitiesModal">Atividades</a></li>
+                <li><a href="#">Turmas</a></li>
+                <li><a href="#">Relatórios</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </div>
+
+
+
+        <div class="main-content">
+            <header>
+                <h1>Pedagógico Dashboard</h1>
+                <p>Visão geral das atividades e custos associados</p>
+            </header>
+
+            <section class="overview">
+                <div class="card">
+                    <h2>N° Atividades Realizadas</h2>
+                    <p>423</p>
+                </div>
+                <div class="card">
+                    <h2>N° de Cursos</h2>
+                    <p>5</p>
+                </div>
+                <div class="card">
+                    <h2>Custo Total</h2>
+                    <p>R$3,500</p>
+                </div>
+            </section>
+
+            <div class="recent-activities">
+                <div class="table-container">
+                    <h3>Cursos que Mais Gastaram</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Curso</th>
+                                <th>Alunos</th>
+                                <th>Número de Procedimentos</th>
+                                <th>Gasto Total ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Medicina</td>
+                                <td>25</td>
+                                <td>12</td>
+                                <td>2,500</td>
+                            </tr>
+                            <tr>
+                                <td>Odontologia</td>
+                                <td>20</td>
+                                <td>28</td>
+                                <td>2,000</td>
+                            </tr>
+                            <tr>
+                                <td>Farmácia</td>
+                                <td>15</td>
+                                <td>20</td>
+                                <td>1,800</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-container">
+                    <h3>Procedimentos que Mais Gastaram</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Procedimento</th>
+                                <th>Número de Realizações</th>
+                                <th>Custo Total ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Exame de Sangue</td>
+                                <td>50</td>
+                                <td>5,000</td>
+                            </tr>
+                            <tr>
+                                <td>Ressonância Magnética</td>
+                                <td>10</td>
+                                <td>3,500</td>
+                            </tr>
+                            <tr>
+                                <td>Check-Up Completo</td>
+                                <td>8</td>
+                                <td>2,800</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+
+            <div class="charts-row">
+                <div class="chart-container">
+                    <h3>Atividades por Turma</h3>
+                    <canvas id="activitiesByClassChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Custo Total das Atividades</h3>
+                    <canvas id="totalCostActivitiesChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Procedimentos Mais Realizados</h3>
+                    <canvas id="mostPerformedProceduresChart"></canvas>
+                </div>
+            </div>
+
+            <div class="charts-row-down">
+                <div class="chart-container">
+                    <h3>Custo por Atividade</h3>
+                    <canvas id="costPerActivityChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Custo por Turma</h3>
+                    <canvas id="costByClassChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Itens Mais Usados</h3>
+                    <canvas id="mostUsedItemsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/dashboardPedagogico.js"></script>
+</body>
+
+</html>
