@@ -61,7 +61,7 @@ const ctx4 = document.getElementById('costPerActivityChart').getContext('2d');
 new Chart(ctx4, {
     type: 'bar',
     data: {
-        labels: ['Atividade 1', 'Atividade 2', 'Atividade 3', 'Atividade 4'],
+        labels: ['Sutura', 'Lavagem Intestinal', 'Banho de leito', 'Curativo'],
         datasets: [{
             label: 'Custo ($)',
             data: [120, 200, 180, 150],
@@ -80,7 +80,7 @@ const ctx5 = document.getElementById('mostPerformedProceduresChart').getContext(
 new Chart(ctx5, {
     type: 'bar',
     data: {
-        labels: ['Exame de Sangue', 'Ressonância', 'Check-Up', 'Raio-X'],
+        labels: ['Sutura', 'Banho de Leito', 'Curativo', 'Lavagem Intestinal'],
         datasets: [{
             label: 'Número de Realizações',
             data: [50, 30, 25, 40],
@@ -99,7 +99,7 @@ const ctx6 = document.getElementById('mostUsedItemsChart').getContext('2d');
 const mostUsedItemsChart = new Chart(ctx6, {
     type: 'bar',
     data: {
-        labels: ['Item A', 'Item B', 'Item C', 'Item D', 'Item E'],
+        labels: ['luvas de procedimento M', 'Seringa 5ml', 'Gazes', 'Algodão', 'Alccol 70%'],
         datasets: [{
             label: 'Quantidade Usada',
             data: [120, 100, 80, 60, 50],
@@ -140,10 +140,10 @@ window.onload = function () {
 };
 
 const inventoryData = [
-    { item: 'Item A', caixas: 10, preco: 50, unidades: 100, validade: '2025-01-01' },
-    { item: 'Item B', caixas: 5, preco: 30, unidades: 50, validade: '2024-12-15' },
-    { item: 'Item C', caixas: 20, preco: 70, unidades: 200, validade: '2026-05-10' },
-    { item: 'Item D', caixas: 8, preco: 45, unidades: 90, validade: '2025-03-22' },
+    { item: 'Alccol 70%', caixas: 10, preco: 50, unidades: 100, validade: '2025-01-01' },
+    { item: 'Gazes', caixas: 5, preco: 30, unidades: 50, validade: '2024-12-15' },
+    { item: 'Seringa 5ml', caixas: 20, preco: 70, unidades: 200, validade: '2026-05-10' },
+    { item: 'luvas M', caixas: 8, preco: 45, unidades: 90, validade: '2025-03-22' },
 ];
 
 const openInventoryModal = document.getElementById('openInventoryModal');
